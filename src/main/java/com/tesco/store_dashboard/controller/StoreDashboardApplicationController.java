@@ -37,7 +37,9 @@ public class StoreDashboardApplicationController {
 	
 	@GetMapping("getDashboardDetails/{userId}")
 	public DashboardDetails getDashboardDetails(@PathVariable("userId") String userId){
-		return storeDashboardApplication.getDashboardDetails(userId);
+		DashboardDetails dashboardDetails = storeDashboardApplication.getDashboardDetails(userId);
+		System.out.println("getUserPreferenceId"+dashboardDetails.getUserPreferenceId());
+		return dashboardDetails;
 	}
 	
 	@PutMapping("updateUserPreferenceInfo")

@@ -5,10 +5,10 @@ import java.util.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-@Entity
+//@Entity
 public class UserDetails {
 	
-	@Id
+	//@Id
 	private long id;
 	private String userName;
 	private String userDesignation;

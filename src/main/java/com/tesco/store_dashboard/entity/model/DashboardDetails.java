@@ -3,18 +3,20 @@ package com.tesco.store_dashboard.entity.model;
 import java.util.Date;
 import java.util.List;
 
-import com.tesco.store_dashboard.vo.DashboardDetailsInfo;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "dashboard_details")
 public class DashboardDetails {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "dashboardId")
 	private long id;
 	private long userId;
 	private long userPreferenceId;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn( name = "dashboardDetailsId", referencedColumnName = "dashboardId")
 	private List<DashboardDetailsInfo> dashboardDetails;
 	private Date createdDate;
 	private Date updatedDate;

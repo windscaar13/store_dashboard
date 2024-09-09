@@ -13,16 +13,16 @@ import jakarta.persistence.Table;
 import com.tesco.store_dashboard.controller.converter.*;
 
 
-@Entity
-@Table(name = "user_preference")
+//@Entity
+//@Table(name = "user_preference")
 public class UserPreference {
 	
-	@Id
+	//@Id
 	private long id;
 	private long userId;
 	private List<String> storeId;
-	@Convert(converter = AreasToMonitorConverter.class)
-    @Column(name = "areas_to_monitor", length = 500)
+	//@Convert(converter = AreasToMonitorConverter.class)
+    //@Column(name = "areas_to_monitor", length = 500)
 	private AreasToMonitor areasToMonitor;
 	private int criticalAlertsToBeDisplayed;
 	private Date createdDate;

@@ -6,10 +6,10 @@ import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-@Entity
+//@Entity
 public class DashboardMetadata {
-	
-	@Id
+
+	//@Id
 	private long id;
 	private List<String> storeDataType;
 	private List<String> storeInfrastructureType;
