@@ -17,3 +17,109 @@ Creating new data dir: After creating a new dir
 
 
 psql -U postgres
+
+
+DB Scripts:
+
+SCHEMA NAME: sdash
+
+CREATE TABLE sdash.user_details 
+( 
+ user_id SERIAL PRIMARY KEY,
+ user_name VARCHAR(50) NOT NULL,
+ user_designation VARCHAR(50),
+ access_level VARCHAR(20),
+ created_date DATE NOT NULL,
+ updated_date DATE NOT NULL,
+ updated_by VARCHAR(20) NOT NULL 
+);
+
+CREATE TABLE sdash.user_preference 
+( 
+ user_pref_id SERIAL PRIMARY KEY,
+ user_id INT,
+ user_pref_json JSON,
+ critical_alerts_to_be_displayed INT,
+ created_date DATE NOT NULL,
+ updated_date DATE NOT NULL,
+ updated_by VARCHAR(20) NOT NULL 
+);
+
+CREATE TABLE sdash.dashboard_metadata 
+( 
+ dashboard_meta_id SERIAL PRIMARY KEY,
+ dashboard_meta_json JSON,
+ created_date DATE NOT NULL,
+ updated_date DATE NOT NULL,
+ updated_by VARCHAR(20) NOT NULL 
+);
+
+CREATE TABLE sdash.dashboard_details 
+( 
+ dashboardId SERIAL PRIMARY KEY,
+ userId INT,
+ userPreferenceId INT,
+ createdDate DATE NOT NULL,
+ updatedDate DATE NOT NULL,
+ updatedBy VARCHAR(20) NOT NULL 
+);
+
+CREATE TABLE sdash.dashboard_details_info
+(
+ dashboardInfoId SERIAL PRIMARY KEY,
+ dashboardDetailsId INT,
+ storeId VARCHAR(20) NOT NULL,
+ createdDate DATE NOT NULL,
+ updatedBy VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE sdash.dashboard_events
+(
+ eventId SERIAL PRIMARY KEY,
+ alertEventId INT,
+ storeDataId INT,
+ storeInfraDataId INT,
+ status VARCHAR(20) NOT NULL,
+ eventDescription VARCHAR(20) NOT NULL,
+ title VARCHAR(20) NOT NULL,
+ type VARCHAR(20) NOT NULL,
+ storeId VARCHAR(20) NOT NULL,
+ createdDate DATE NOT NULL,
+ updatedBy VARCHAR(20) NOT NULL
+);
+ 
+ 
+ 
+ 
+ INSERT INTO sdash.dashboard_events(
+	eventid, alerteventid, storedataid, storeinfradataid, status, eventdescription, title, type, storeid, createddate, updatedby)
+	VALUES (1, 1, 0, 0, 'Critical', 'Description Data', 'Alert Data', '01', 'Alert', '2017-03-14', 'demouser');
+
+INSERT INTO sdash.dashboard_events(
+	eventid, alerteventid, storedataid, storeinfradataid, status, eventdescription, title, type, storeid, createddate, updatedby)
+	VALUES (2, 0, 1, 0, 'Moderate', 'Description Data', 'Store Data', '01', 'Store Data', '2017-03-14', 'demouser');
+
+INSERT INTO sdash.dashboard_events(
+	eventid, alerteventid, storedataid, storeinfradataid, status, eventdescription, title, type, storeid, createddate, updatedby)
+	VALUES (3, 0, 0, 1, 'Moderate', 'Description Data', 'Store Infra Data', '01', 'Store Infra', '2017-03-14', 'demouser');
+	
+	
+	
+	
+	INSERT INTO sdash.dashboard_details_info(
+	dashboardinfoid, dashboarddetailsid, storeid, createddate, updatedby)
+	VALUES (1, 1, '01', '2017-03-14', 'demouser');
+INSERT INTO sdash.dashboard_details_info(
+	dashboardinfoid, dashboarddetailsid, storeid, createddate, updatedby)
+	VALUES (2, 1, '02', '2017-03-14', 'demouser');
+	
+	
+	INSERT INTO sdash.dashboard_details(
+	dashboardid, userid, userpreferenceid, createddate, updateddate, updatedby)
+	VALUES (1, '1', 1, '2017-03-14', '2017-03-14', 'demouser');
+	
+	
+	
+	select * from sdash.dashboard_events;
+select * from sdash.dashboard_details_info;
+select * from sdash.dashboard_details;
