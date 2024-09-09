@@ -1,0 +1,19 @@
+echo server 
+108.142.126.185
+
+azureuser
+Azureuser@12345
+
+psql -h localhost -U postgres -p 5432
+
+Conf path: /var/lib/pgsql/data/
+
+Command to find the data dir: pg_controldata
+
+Creating new data dir: After creating a new dir
+
+	1. sudo chown postgres:postgres /var/lib/postgresql/new_data
+	2. sudo chmod 700 /var/lib/postgresql/new_data
+
+
+psql -U postgres
