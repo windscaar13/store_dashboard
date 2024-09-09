@@ -182,6 +182,47 @@ const Payload = {
     },
   ];
 
+DB Scripts:
+ 
+SCHEMA NAME: sdash
+ 
+CREATE TABLE sdash.user_details (
+    user_id SERIAL PRIMARY KEY,
+    user_name VARCHAR(50) NOT NULL,
+    user_designation VARCHAR(50),
+    access_level VARCHAR(20),
+    created_date DATE NOT NULL,
+    updated_date DATE NOT NULL,
+    updated_by VARCHAR(20) NOT NULL
+);
+ 
+CREATE TABLE sdash.user_preference (
+	user_pref_id SERIAL PRIMARY KEY,
+	user_id INT,
+	user_pref_json JSON,
+	critical_alerts_to_be_displayed INT,
+	created_date DATE NOT NULL,
+    updated_date DATE NOT NULL,
+    updated_by VARCHAR(20) NOT NULL
+);
+ 
+CREATE TABLE sdash.dashboard_metadata (
+	dashboard_meta_id SERIAL PRIMARY KEY,
+	dashboard_meta_json JSON,
+	created_date DATE NOT NULL,
+    updated_date DATE NOT NULL,
+    updated_by VARCHAR(20) NOT NULL
+);	
+ 
+CREATE TABLE sdash.dashboard_details (
+	dashboard_id SERIAL PRIMARY KEY,
+	user_id INT,
+	user_pref_id INT,
+	dashboard_json JSON,
+	created_date DATE NOT NULL,
+    updated_date DATE NOT NULL,
+    updated_by VARCHAR(20) NOT NULL
+);
   
 Important links: https://innersource.soprasteria.com/
 
