@@ -67,7 +67,7 @@ CREATE TABLE sdash.dashboard_details
 CREATE TABLE sdash.dashboard_details_info
 (
  dashboardInfoId SERIAL PRIMARY KEY,
- dashboardDetailsId INT,
+ dashboardDetailsId INT REFERENCES dashboard_details(dashboardId),
  storeId VARCHAR(20) NOT NULL,
  createdDate DATE NOT NULL,
  updatedBy VARCHAR(20) NOT NULL
@@ -76,9 +76,7 @@ CREATE TABLE sdash.dashboard_details_info
 CREATE TABLE sdash.dashboard_events
 (
  eventId SERIAL PRIMARY KEY,
- alertEventId INT,
- storeDataId INT,
- storeInfraDataId INT,
+ dashboardInfoId INT REFERENCES dashboard_details_info(dashboardInfoId),
  status VARCHAR(20) NOT NULL,
  eventDescription VARCHAR(20) NOT NULL,
  title VARCHAR(20) NOT NULL,
