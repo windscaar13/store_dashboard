@@ -67,7 +67,7 @@ CREATE TABLE sdash.dashboard_details
 CREATE TABLE sdash.dashboard_details_info
 (
  dashboardInfoId SERIAL PRIMARY KEY,
- dashboardDetailsId INT REFERENCES dashboard_details(dashboardId),
+ dashboardDetailsId INT REFERENCES sdash.dashboard_details(dashboardId),
  storeId VARCHAR(20) NOT NULL,
  createdDate DATE NOT NULL,
  updatedBy VARCHAR(20) NOT NULL
@@ -76,7 +76,7 @@ CREATE TABLE sdash.dashboard_details_info
 CREATE TABLE sdash.dashboard_events
 (
  eventId SERIAL PRIMARY KEY,
- dashboardInfoId INT REFERENCES dashboard_details_info(dashboardInfoId),
+ dashboardInfoId INT REFERENCES sdash.dashboard_details_info(dashboardInfoId),
  status VARCHAR(20) NOT NULL,
  eventDescription VARCHAR(20) NOT NULL,
  title VARCHAR(20) NOT NULL,
@@ -86,38 +86,7 @@ CREATE TABLE sdash.dashboard_events
  updatedBy VARCHAR(20) NOT NULL
 );
  
- 
- 
- 
- INSERT INTO sdash.dashboard_events(
-	eventid, alerteventid, storedataid, storeinfradataid, status, eventdescription, title, type, storeid, createddate, updatedby)
-	VALUES (1, 1, 0, 0, 'Critical', 'Description Data', 'Alert Data', '01', 'Alert', '2017-03-14', 'demouser');
-
-INSERT INTO sdash.dashboard_events(
-	eventid, alerteventid, storedataid, storeinfradataid, status, eventdescription, title, type, storeid, createddate, updatedby)
-	VALUES (2, 0, 1, 0, 'Moderate', 'Description Data', 'Store Data', '01', 'Store Data', '2017-03-14', 'demouser');
-
-INSERT INTO sdash.dashboard_events(
-	eventid, alerteventid, storedataid, storeinfradataid, status, eventdescription, title, type, storeid, createddate, updatedby)
-	VALUES (3, 0, 0, 1, 'Moderate', 'Description Data', 'Store Infra Data', '01', 'Store Infra', '2017-03-14', 'demouser');
 	
-	
-	
-	
-	INSERT INTO sdash.dashboard_details_info(
-	dashboardinfoid, dashboarddetailsid, storeid, createddate, updatedby)
-	VALUES (1, 1, '01', '2017-03-14', 'demouser');
-INSERT INTO sdash.dashboard_details_info(
-	dashboardinfoid, dashboarddetailsid, storeid, createddate, updatedby)
-	VALUES (2, 1, '02', '2017-03-14', 'demouser');
-	
-	
-	INSERT INTO sdash.dashboard_details(
-	dashboardid, userid, userpreferenceid, createddate, updateddate, updatedby)
-	VALUES (1, '1', 1, '2017-03-14', '2017-03-14', 'demouser');
-	
-	
-	
-	select * from sdash.dashboard_events;
+select * from sdash.dashboard_events;
 select * from sdash.dashboard_details_info;
 select * from sdash.dashboard_details;
